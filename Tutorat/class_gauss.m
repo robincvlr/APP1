@@ -5,7 +5,7 @@ function class_gauss
   ref_P300 = load("Donnees/ref_P300");
   ref_NP300 = load("Donnees/ref_NP300"); 
 #==========================================================================================
-  %Suppression des deux premieres colonnes de donnees : passage a� 1D
+  %Suppression des deux premieres colonnes de donnees : passage a� 1D
   ref_P300(:,1) = [];
   ref_P300(:,1) = [];
   ref_P300(:,1) = [];
@@ -15,7 +15,6 @@ function class_gauss
   ref_NP300(:,1) = [];
   ref_NP300(:,1) = [];
   [Nlines,Ncolumns] = size(ref_NP300);
-<<<<<<< HEAD
   printf("La matrice NP300 de référence est de taille : %d par %d\n",Nlines,Ncolumns);
   printf("Traitement des matrices réalisé...\n\n");
   % Nouvelles matrices covariances
@@ -28,8 +27,7 @@ function class_gauss
   printf("Matrice de COVARIANCE des données NP300 : \n");
   disp(cov_NP300);
   printf("\n");
-  
-  
+#==========================================================================================  
    #calcul des valeurs propres et des vecteurs propres des matrices de covariance
   #1 - valeurs propres et vecteurs propres pour cov_P300
   [vecteurs_pro_cov_P300, valeurs_pro_cov_P300] = eig(cov_P300);
@@ -44,23 +42,18 @@ function class_gauss
   printf("\nMatrice de COVARIANCE REDUITE des données NP300 : \n");
   disp(valeurs_pro_cov_NP300);
   printf("\n");
-  
   printf("vecteurs propres \n");
   disp(vecteurs_pro_cov_NP300);
-  
-  
   M=corr(ref_P300);
   disp(M);
   printf("\n");
   N=corr(ref_NP300);
   disp(N);
-=======
   printf("La matrice NP300 de reference est de taille : %d par %d\n",Nlines,Ncolumns);
   printf("Traitement des matrices realise...\n\n");
->>>>>>> df22fedf990f3d939c9345e9706a68269acfeeab
 #========================================================================================== 
   %evaluation des probabilites : 
-  %Les pourcentages sont les probabilit�s pour un nombre d'�chantillons important 
+  %Les pourcentages sont les probabilit�s pour un nombre d'�chantillons important 
   printf("Nombre d'echantillons : %d\n",lines+Nlines);
   p_P300 = lines/(lines+Nlines);
   p_NP300 = 1-p_P300;
@@ -75,6 +68,6 @@ function class_gauss
   cov_NP300 = cov(ref_NP300);
   x = meshgrid(-1:0.01:0);
   f = log(4*sqrt(cov_P300/cov_NP300))+1/2*((x-moy_P300)*inv(cov_P300)*(x-moy_P300)-(x-moy_NP300)*inv(cov_NP300)*(x-moy_NP300));
-  plotyy(ref_P300(:,1),'+g',ref_NP300(:,1),'or',x, f, '-b');
+  plot(p_P300(:,1),'^v',p_NP300(:,1))
   title("P300 et NP300 par loi gausienne en 1D avec frontiere");
 endfunction
