@@ -5,18 +5,20 @@ function class_gauss
   ref_P300 = load("Donnees/ref_P300");
   ref_NP300 = load("Donnees/ref_NP300"); 
 #==========================================================================================
-  %Suppression des deux premieres colonnes de donnees : passage a  2D
+  %Suppression des deux premieres colonnes de donnees : passage a  1D
+  ref_P300(:,1) = [];
   ref_P300(:,1) = [];
   ref_P300(:,1) = [];
   [lines,columns] = size(ref_P300);
   printf("La matrice P300 de reference est de taille : %d par %d\n",lines,columns);
   ref_NP300(:,1) = [];
   ref_NP300(:,1) = [];
+  ref_NP300(:,1) = [];
   [Nlines,Ncolumns] = size(ref_NP300);
   printf("La matrice NP300 de reference est de taille : %d par %d\n",Nlines,Ncolumns);
   printf("Traitement des matrices realise...\n\n");
 #========================================================================================== 
-  %evaluation des probabilites par loi binomiale: 
+  %evaluation des probabilites : 
   %Les pourcentages sont les probabilités pour un nombre d'échantillons important 
   printf("Nombre d'echantillons : %d\n",lines+Nlines);
   p_P300 = lines/(lines+Nlines);
@@ -25,9 +27,13 @@ function class_gauss
 #========================================================================================== 
   %Equation du cout 
   %Probabilite gausienne
-  log(4*sqrtm(1.5e-5/2.4412e-4))=-1/2*(759.07*x^2+353.37*y^2-714.76*x*y+950.27*x-680.48*y+1043.2);
-#========================================================================================== 
   %Calcul de la frontiere
-  plot(ref_P300(:,3),ref_P300(:,4),'*',ref_NP300(:,3),ref_NP300(:,4),'+');
-  title("Frontiere entre P300 et NP300 par loi gausienne");
+  moy_P300 = mean(ref_P300);
+  moy_NP300 = mean(ref_NP300);
+  cov_P300 = cov(ref_P300);
+  cov_NP300 = cov(ref_NP300);
+  x = meshgrid(-1:0.01:0);
+  f = log(4*sqrt(cov_P300/cov_NP300))+1/2*((x-moy_P300)*inv(cov_P300)*(x-moy_P300)-(x-moy_NP300)*inv(cov_NP300)*(x-moy_NP300));
+  plotyy(ref_P300(:,1),'+g',ref_NP300(:,1),'or',x, f, '-b');
+  title("P300 et NP300 par loi gausienne en 1D avec frontiere");
 endfunction
