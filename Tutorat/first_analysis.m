@@ -40,6 +40,7 @@ function first_analysis
   printf("\nMatrice de COVARIANCE REDUITE des données NP300 : \n");
   disp(valeurs_pro_cov_NP300);
   printf("\n");
+  
 #==========================================================================================
   #étape de réduction de la matrice. 
   %Pourquoi réduire ? La réduction de la matrice permet de réduire le temps de calcul via matrice diagonale.
