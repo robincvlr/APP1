@@ -1,31 +1,33 @@
 %Par Robin Cavalieri
 function class_gauss
 #==========================================================================================
-  %Chargement des fichiers de données 
+  %Chargement des fichiers de donnees 
   ref_P300 = load("Donnees/ref_P300");
   ref_NP300 = load("Donnees/ref_NP300"); 
 #==========================================================================================
-  %Suppression des deux premières colonnes de données : passage à 2D
+  %Suppression des deux premieres colonnes de donnees : passage a� 2D
   ref_P300(:,1) = [];
   ref_P300(:,1) = [];
   [lines,columns] = size(ref_P300);
-  printf("La matrice P300 de référence est de taille : %d par %d\n",lines,columns);
+  printf("La matrice P300 de reference est de taille : %d par %d\n",lines,columns);
   ref_NP300(:,1) = [];
   ref_NP300(:,1) = [];
   [Nlines,Ncolumns] = size(ref_NP300);
-  printf("La matrice NP300 de référence est de taille : %d par %d\n",Nlines,Ncolumns);
-  printf("Traitement des matrices réalisé...\n\n");
+  printf("La matrice NP300 de reference est de taille : %d par %d\n",Nlines,Ncolumns);
+  printf("Traitement des matrices realise...\n\n");
 #========================================================================================== 
-  %évaluation des probabilités : 
+  %evaluation des probabilites par loi binomiale: 
+  %Les pourcentages sont les probabilit�s pour un nombre d'�chantillons important 
+  printf("Nombre d'echantillons : %d\n",lines+Nlines);
   p_P300 = lines/(lines+Nlines);
-  p_NP300 = Nlines/(lines+Nlines);
-  printf("Les probabilités sont : \n-p(P300) : %d\n-p(NP300) : %d\n\n",p_P300,p_NP300);
+  p_NP300 = 1-p_P300;
+  printf("Les probabilites sont : \n-p(P300) : %d\n-p(NP300) : %d\n\n",p_P300,p_NP300);
 #========================================================================================== 
   %Equation du cout 
-  X=[x;y];
-  R_P300 = 3*p_P300*(1/(2*pi*sqrt(det(cov(ref_P300)))))*exp(-0,5*(transpose(X-mean(ref_P300)))*inv(cov(ref_P300))*(X-mean(ref_P300)));
+  %Probabilite gausienne
+  log(4*sqrtm(1.5e-5/2.4412e-4))=-1/2*(759.07*x^2+353.37*y^2-714.76*x*y+950.27*x-680.48*y+1043.2);
 #========================================================================================== 
-  %Calcul de la frontière
-  
-  
+  %Calcul de la frontiere
+  plot(ref_P300(:,3),ref_P300(:,4),'*',ref_NP300(:,3),ref_NP300(:,4),'+');
+  title("Frontiere entre P300 et NP300 par loi gausienne");
 endfunction
