@@ -2,20 +2,12 @@
 load Histo_X_P300.txt;
 load Histo_X_NP300.txt;
 
-ref_P300 = load("Donnees/ref_P300");
-ref_NP300 = load("Donnees/ref_NP300"); 
+ref_P300 = load("ref_P300.txt");
+ref_NP300 = load("ref_NP300,txt"); 
 
 [lines,columns] = size(ref_P300);
 [Nlines,Ncolumns] = size(ref_NP300);
 Ntotal=lines+Nlines;
-
-ref_P300(:,1) = [];
-ref_P300(:,1) = [];
-ref_P300(:,1) = [];
-ref_NP300(:,1) = [];
-ref_NP300(:,1) = [];
-ref_NP300(:,1) = [];
-
 
 %estimation des classes pour les ref
 Classe_estimee_P300=zeros(1,lines);
