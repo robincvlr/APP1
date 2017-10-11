@@ -1,4 +1,5 @@
 %Par Robin Cavalieri
+%Ce script régit le traitement d'une classification par calcul des probabilités (supposées gausiennes )
 %==========================================================================================
 %Chargement des fichiers de donnees 
 ref_P300 = load("Donnees/ref_P300");
@@ -71,10 +72,12 @@ cov_NP300 = cov(ref_NP300);
 %========================================================================================== 
 %Affichage des données 
 %1D
+figure(1)
 plot(ref_P300,0,'^g',ref_NP300,0,'+r');
-xlabel("n° echantillon");
+xlabel("valeur echantillon");
 title("P300(V) et NP300(R) par loi gausienne en 1D avec frontiere");
 %2D avec numéro de ligne
+figure(2)
 plot(ref_P300(:,1),'^g',ref_NP300(:,1),'+r');
 xlabel("n° echantillon");
 ylabel("valeur echantillon");
