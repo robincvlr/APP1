@@ -15,55 +15,60 @@ test_NP300 = load("Donnees/test_NP300");
 test_NP300(:,1) = [];
 test_NP300(:,1) = [];
 test_NP300(:,1) = [];
-%concatenation de test_NP300 et test_P300
+%concatenation de test_NP300 et test_P300 et calcul des tailles des matrices
 test=[test_P300;test_NP300];
-
-%calcul de la distance euclidienne de chaque vecteur de test avec les vecteurs d'apprentissage
-%a savoir ref_P300 et ref_NP300
-
-%calcul par test_P300 rapport a ref_P300
+[t,tt] = size(test);
+Ntest = t ;
 [i,j] = size(ref_P300);
 nl = i ;
 [i1,j1] = size(test_P300);
 nl1 = i1 ;
-fid = fopen('distance1.txt','w');
-for k=1:nl
-  for k1=1:nl1
-    distance1(k1,:)=sqrt((test_P300(k1,:)^2)-(ref_P300(k,:)^2));
-    fprintf(fid,'%f\n',distance1(k1,:));
-    
-  endfor
-endfor  
-fclose(fid)
-%calcul par test_NP300 rapport a ref_P300
 [i11,j1] = size(test_NP300);
 nl11 = i11 ;
-fid = fopen('distance11.txt','w');
-for k=1:nl
-  for k1=1:nl11
-    distance11(k1,:)=sqrt((test_NP300(k1,:)^2)-(ref_P300(k,:)^2));
-    fprintf(fid,'%f\n',distance11(k1,:));
-    
-  endfor
-endfor  
-fclose(fid)
-
-
-%calcul par rapport a ref_NP300
 [k2,l] = size(ref_NP300);
 nl2 = k2 ;
-fid = fopen('les_distances_euclidienne_%_np300.txt','w');
-for k2=1:nl2
-  for k22=1:nl1
-    distance2(k22,:)=sqrt((test(k22,:)^2)-(ref_NP300(k2,:)^2));
-    fprintf(fid,'%f\n',distance2(k22,:));
+%faire la classification K-PPV pour test_P300 et k=1
+Nreconnu1=0;
+for k=1:nl1
+  for k22=1:nl
+    distance_p1(k22,:)=sqrt((test_P300(k,:)^2)-(ref_P300(k22,:)^2));
+      
   endfor
-endfor  
-fclose(fid)
+  for k222=1:nl2
+    
+    distance_np1(k222,:)=sqrt((test_P300(k,:)^2)-(ref_NP300(k222,:)^2));  
+  endfor
+  distance_p1=sort(distance_p1);
+  distance_np1=sort(distance_np1);
+  if distance_p1(1,:)<distance_np1(1,:)
+    Nreconnu1=Nreconnu1+1;
+  endif
+  disp(Nreconnu1);
+endfor
+%faire la classification K-PPV pour test_NP300 et k=1
+Nreconnu2=0;
+for k=1:nl11
+  for k22=1:nl
+    distance_p2(k22,:)=sqrt((test_NP300(k,:)^2)-(ref_P300(k22,:)^2));
+      
+  endfor
+  for k222=1:nl2
+    
+    distance_np2(k222,:)=sqrt((test_NP300(k,:)^2)-(ref_NP300(k222,:)^2));  
+  endfor
+  distance_p2=sort(distance_p2);
+  distance_np2=sort(distance_np2);
+  if distance_p2(1,:)<distance_np2(1,:)
+    Nreconnu2=Nreconnu2+1;
+  endif
+  disp(Nreconnu2);
+  
+endfor 
+Nreconnu=Nreconnu1+Nreconnu2;
+taux=(Nreconnu*100)/Ntest
 
-%faire la classification K-PPV 
 
-%avoir les distances test_p300 par rapport a ref_P300
+
 
 
 
