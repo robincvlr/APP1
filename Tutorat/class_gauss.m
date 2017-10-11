@@ -84,7 +84,7 @@ ylabel("valeur echantillon");
 title("P300(V) et NP300(R) par loi gausienne en 2D avec frontiere");
 %========================================================================================== 
 %Décision
-[compteurP300, compteurNP300] = test_NP300(Nlines_app, lines_app,cov_NP300, moy_NP300, p_P300, cov_P300, moy_P300, p_NP300);
+[compteurP300, compteurNP300] = test_sig(Nlines_app, lines_app,cov_NP300, moy_NP300, p_P300, cov_P300, moy_P300, p_NP300);
 %========================================================================================== 
 %Affichage des resultats
 printf("En TESTANT les P300, nous avons classé correctement %d vecteurs sur %d.\n",compteurP300,lines2-lines_app);

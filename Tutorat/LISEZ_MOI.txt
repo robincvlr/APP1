@@ -1,0 +1,19 @@
+APP1 : Tutorat d'Intelligence Artificielle Probabiliste
+Par Afaf TAIK - Zakaria BELGOUM - Robin CAVALIERI 
+Automne 2017 
+Code réalisé sur Octave 4.0.0
+
+Cette archive comporte des fonctions du programme global ainsi que les données du traitement
+
+=========================
+CONSIGNES D'UTILISATION : 
+
+1- Décompresser l'archive
+
+2- Ouvrir "main.m" dans Octave
+ 
+3- Pour tester l'entièreté du code, rendez-vous dans le "main.m"
+   "main.m" est le script principal à partir duquel toutes les fonctions et scripts implémentés sont appelés.
+   Décommentez les lignes du "main.m" pour chaque étude et exécutez avec "F5".
+
+=========================
