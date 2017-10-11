@@ -2,6 +2,8 @@
 %Main de notre résolution de problématique 
 %Pour réaliser chaque étude, veuillez décommenter la ligne correspondante.
 
+%===============================================================================
+%TRAVAIL SUR LES SIGNAUX
 %1 - Analyse preliminaire des donnees
 first_analysis();
 
@@ -13,4 +15,7 @@ class_gauss();
 
 %2c - Classification avec frontière - Zakaria Belgoum
 
+
+%===============================================================================
+%TRAVAIL SUR LES IMAGES
 
