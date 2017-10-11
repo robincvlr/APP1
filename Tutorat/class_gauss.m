@@ -50,8 +50,8 @@ printf("Traitement des matrices realise...\n");
 #========================================================================================== 
 %evaluation des probabilites : 
 %Les pourcentages sont les probabilites pour un nombre d'echantillons important 
-printf("Nombre d'echantillons : %d\n",lines_app+Nlines_app);
-p_P300 = lines_app/(lines_app+Nlines_app);
+printf("Nombre d'echantillons : %d\n",lines+Nlines);
+p_P300 = lines/(lines+Nlines);
 p_NP300 = 1-p_P300;
 printf("Les probabilites sont : \n-p(P300) : %d\n-p(NP300) : %d\n\n",p_P300,p_NP300);
 %========================================================================================== 
