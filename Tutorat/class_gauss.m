@@ -9,20 +9,12 @@ ref_NP300 = load("Donnees/ref_NP300");
 ref_P300 = red_matrice(ref_P300, 3);
 %On prend que 80% des premières lignes
 [lines,columns] = size(ref_P300);
-lines_app = round(lines*80/100);
-ref_P300 = ref_P300(1:lines_app,1);
-[lines_app, columns] = size(ref_P300);
 printf("La matrice P300 de reference est de taille : %d par %d\n",lines,columns);
-printf("La matrice P300 d'apprentissage est de taille : %d par %d\n",lines_app,columns);
 %Reduction des NP300
 ref_NP300 = red_matrice(ref_NP300, 3);
 %On prend que 80% des premières lignes
 [Nlines,columns] = size(ref_NP300);
-Nlines_app = round(Nlines*80/100);
-ref_NP300 = ref_NP300(1:Nlines_app,1);
-[Nlines_app, columns] = size(ref_NP300);
 printf("La matrice NP300 de référence est de taille : %d par %d\n",Nlines,columns);
-printf("La matrice NP300 d'apprentissage est de taille : %d par %d\n",Nlines_app,columns);
 printf("Traitement des matrices réalisé...\n\n");
 % Nouvelles matrices covariances
 %calcul des matrices de covariance pour C1 et C2
@@ -84,11 +76,11 @@ ylabel("valeur echantillon");
 title("P300(V) et NP300(R) par loi gausienne en 2D avec frontiere");
 %========================================================================================== 
 %Décision
-[compteurP300, compteurNP300] = test_sig(Nlines_app, lines_app,cov_NP300, moy_NP300, p_P300, cov_P300, moy_P300, p_NP300);
+[compteurP300, compteurNP300, total_test] = test_sig(Nlines, lines,cov_NP300, moy_NP300, p_P300, cov_P300, moy_P300, p_NP300);
 %========================================================================================== 
 %Affichage des resultats
-printf("En TESTANT les P300, nous avons classé correctement %d vecteurs sur %d.\n",compteurP300,lines2-lines_app);
-printf("En TESTANT les NP300, nous avons classé correctement %d vecteurs sur %d.\n",compteurNP300,Nlines2-Nlines_app);
-taux_classification = (compteurP300 + compteurNP300)/(lines2-lines_app+Nlines2-Nlines_app);
+printf("En TESTANT les P300, nous avons classé correctement %d vecteurs sur %d.\n",compteurP300,total_test/2);
+printf("En TESTANT les NP300, nous avons classé correctement %d vecteurs sur %d.\n",compteurNP300,total_test/2);
+taux_classification = (compteurP300 + compteurNP300)/(total_test);
 printf("Le TAUX DE CLASSIFICATION est : %d\n",taux_classification);
 %Vu le faible taux de classifiation, nous pouvons en conclure que la loi de distribution n'est pas gausienne
