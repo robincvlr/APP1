@@ -2,8 +2,8 @@
 %Ce script régit le traitement d'une classification par calcul des probabilités (supposées gausiennes )
 %==========================================================================================
 %Chargement des fichiers de donnees 
-ref_P300 = load("Donnees/ref_P300");
-ref_NP300 = load("Donnees/ref_NP300"); 
+ref_P300 = load("../rotationP300.txt");
+ref_NP300 = load("../rotationNP300.txt"); 
 %==========================================================================================
 %Suppression des trois premieres colonnes de donnees : passage a 1D
 ref_P300 = red_matrice(ref_P300, 2);%On choisit si l'on veut passer en étude 1D ou 2D
