@@ -13,7 +13,7 @@ function hist3Composantes=JR_Hist3Composantes(image)
 %%%%%%%%%%%
 % testee sur matlab version R2012a et sur octave 3.8.0
 %% On prepare les histogrammes
-nBins = 256; % nb de bins de l'histogramme
+nBins = 256/8; % nb de bins de l'histogramme
 %% A completer le code pour pouvoir le faire fonctionner
 comp1Hist = imhist(image(:,:,1), nBins); % histogramme de la composante 1
 comp2Hist = imhist(image(:,:,2), nBins);
