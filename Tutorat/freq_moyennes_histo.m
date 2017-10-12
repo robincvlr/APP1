@@ -1,25 +1,14 @@
-%Par Robin Cavalieri
+%Par 
 %Ressort les fréquence des composantes les plus hautes pour chaque classe d'images
-function [C1_freq_coast C2_freq_coast C3_freq_coast C1_freq_forest C2_freq_forest C3_freq_forest C1_freq_street C2_freq_street C3_freq_street] = freq_moyennes_histo(hist_coast_moy, hist_forest_moy, hist_street_moy)
-  %On travaille sur des plages de 8
-  C1_freq_coast = round(max(hist_coast_moy(:,1))/32);
-  printf("max freq C1_coast pour : %d\n",C1_freq_coast);
-  C2_freq_coast = round(max(hist_coast_moy(:,2))/32);
-  printf("max freq C2_coast pour : %d\n",C2_freq_coast);
-  C3_freq_coast = round(max(hist_coast_moy(:,2))/32);
-  printf("max freq C3_coast pour : %d\n",C3_freq_coast);
+function [P1, P2,P3] = freq_moyennes_histo(image,h_foret,h_plage,h_rue)
+   histo_image=JR_Hist3Composantes(image);
+   %extraction de l'indice de la valeur la plus présente pour les 3 composantes 
+  [max_R,idx_R]=max(histo_image(:,1));
+  [max_G,idx_G]=max(histo_image(:,2));
+  [max_B,idx_B]=max(histo_image(:,3));
   
-  C1_freq_forest = round(max(hist_forest_moy(:,1))/32);
-  printf("max freq C1_forest pour : %d\n",C1_freq_forest);
-  C2_freq_forest = round(max(hist_forest_moy(:,2))/32);
-  printf("max freq C2_forest pour : %d\n",C2_freq_forest);
-  C3_freq_forest = round(max(hist_forest_moy(:,3))/32);
-  printf("max freq C3_forest pour : %d\n",C3_freq_forest);
-  
-  C1_freq_street = round(max(hist_street_moy(:,1))/32);
-  printf("max freq C1_street pour : %d\n",C1_freq_street);
-  C2_freq_street = round(max(hist_street_moy(:,2))/32);
-  printf("max freq C2_street pour : %d\n",C2_freq_street);
-  C3_freq_street = round(max(hist_street_moy(:,3))/32);
-  printf("max freq C3_street pour : %d\n",C3_freq_street);
+  P1=h_foret(idx_R,1)*h_foret(idx_G,2)*h_foret(idx_B,3);
+  P2=h_plage(idx_R,1)*h_plage(idx_G,2)*h_plage(idx_B,3);
+  P3=h_rue(idx_R,1)*h_rue(idx_G,2)*h_rue(idx_B,3);
+    
 endfunction

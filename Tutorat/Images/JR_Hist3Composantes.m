@@ -20,13 +20,13 @@ comp2Hist = imhist(image(:,:,2),nBins );
 comp3Hist = imhist(image(:,:,3),nBins);
 
 %% Sortie graphique
-hFig = figure;
-hold on
+%hFig = figure;
+%hold on
 %% A completer le code pour pouvoir le faire fonctionner
-h(1) = stem(1:256, comp1Hist,''); % y pour jaune, r pour rouge
-h(2) = stem( + 1/3, comp2Hist,''); % m pour magenta, g pour green
-h(3) = stem( + 2/3, comp3Hist,'b'); % c pour cyan, b pour bleu
-title('Superposition des 3 histogrammes. Rouge: 1ere comp., Vert: 2nd comp., Bleu: 3iem comp.');
+%h(1) = stem(1:256, comp1Hist,''); % y pour jaune, r pour rouge
+%h(2) = stem( + 1/3, comp2Hist,''); % m pour magenta, g pour green
+%h(3) = stem( + 2/3, comp3Hist,'b'); % c pour cyan, b pour bleu
+%title('Superposition des 3 histogrammes. Rouge: 1ere comp., Vert: 2nd comp., Bleu: 3iem comp.');
 
 %% Creation de la matrice contenant les 3 histogrammes
 % Les 3 histogrammes sont concatenes dans une seule matrice.
