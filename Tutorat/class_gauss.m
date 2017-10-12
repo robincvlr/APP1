@@ -6,12 +6,12 @@ ref_P300 = load("Donnees/ref_P300");
 ref_NP300 = load("Donnees/ref_NP300"); 
 %==========================================================================================
 %Suppression des trois premieres colonnes de donnees : passage a 1D
-ref_P300 = red_matrice(ref_P300, 3);
+ref_P300 = red_matrice(ref_P300, 2);%On choisit si l'on veut passer en étude 1D ou 2D
 %On prend que 80% des premières lignes
 [lines,columns] = size(ref_P300);
 printf("La matrice P300 de reference est de taille : %d par %d\n",lines,columns);
 %Reduction des NP300
-ref_NP300 = red_matrice(ref_NP300, 3);
+ref_NP300 = red_matrice(ref_NP300, 2);
 %On prend que 80% des premières lignes
 [Nlines,columns] = size(ref_NP300);
 printf("La matrice NP300 de référence est de taille : %d par %d\n",Nlines,columns);
@@ -64,16 +64,16 @@ cov_NP300 = cov(ref_NP300);
 %========================================================================================== 
 %Affichage des données 
 %1D
-figure(1)
-plot(ref_P300,0,'^g',ref_NP300,0,'+r');
-xlabel("valeur echantillon");
-title("P300(V) et NP300(R) par loi gausienne en 1D avec frontiere");
+%figure(1)
+%plot(ref_P300,0,'^g',ref_NP300,0,'+r');
+%xlabel("valeur echantillon");
+%title("P300(V) et NP300(R) par loi gausienne en 1D avec frontiere");
 %2D avec numéro de ligne
-figure(2)
-plot(ref_P300(:,1),'^g',ref_NP300(:,1),'+r');
-xlabel("n° echantillon");
-ylabel("valeur echantillon");
-title("P300(V) et NP300(R) par loi gausienne en 2D avec frontiere");
+%figure(2)
+%plot(ref_P300(:,1),'^g',ref_NP300(:,1),'+r');
+%xlabel("n° echantillon");
+%ylabel("valeur echantillon");
+%title("P300(V) et NP300(R) par loi gausienne en 2D avec frontiere");
 %========================================================================================== 
 %Décision
 [compteurP300, compteurNP300, total_test] = test_sig(Nlines, lines,cov_NP300, moy_NP300, p_P300, cov_P300, moy_P300, p_NP300);
