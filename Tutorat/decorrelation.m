@@ -1,4 +1,4 @@
-%Par 
+%Par Robin Cavalieri - Zakaria Belgoum
 function class_gauss
 #==========================================================================================
   %Chargement des fichiers de données 

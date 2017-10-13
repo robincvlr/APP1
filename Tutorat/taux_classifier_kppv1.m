@@ -29,7 +29,7 @@ nl11 = i11 ;
 nl2 = k2 ;
 
 kk=1
-while kk<=5
+while kk<=10
 %calcul des vecteurs reconnus pour test_P300
 Nreconnu1=0;
 for k=1:nl1
@@ -37,7 +37,7 @@ for k=1:nl1
     distance_p1(k22,:)=abs(test_P300(k,:)-ref_P300(k22,:));
       
   endfor
-  for k222=1:nl
+  for k222=1:nl2
     
     distance_np1(k222,:)=abs(test_P300(k,:)-ref_NP300(k222,:));  
   endfor
@@ -58,7 +58,7 @@ for k=1:nl11
     distance_p2(k22,:)=abs(test_NP300(k,:)-ref_P300(k22,:));
       
   endfor
-  for k222=1:nl
+  for k222=1:nl2
     
     distance_np2(k222,:)=abs(test_NP300(k,:)-ref_NP300(k222,:));  
   endfor
