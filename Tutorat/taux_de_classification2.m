@@ -11,6 +11,9 @@ nl = i ;
 [k,l] = size(ref_NP300);
 nl1 = k ;
 covariance_p300=cov(ref_P300);
+%par zakaria
+%classification gaussienne avec frontieres en 2D
+
 covariance_np300=cov(ref_NP300);
 m_p300 = mean(ref_P300)';
 m_np300 = mean(ref_NP300)';

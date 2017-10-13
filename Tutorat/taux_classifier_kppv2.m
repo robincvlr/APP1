@@ -1,23 +1,9 @@
 %par zakaria
-%en fixe k allant de jusqu a 5
-%travailler avec la 4eme dimension sur tous les vecteurs d'apprentissage et de test
-ref_P300 = load("Donnees/ref_P300");
-ref_P300(:,1) = [];
-ref_P300(:,1) = [];
-ref_P300(:,1) = [];
-ref_NP300 = load("Donnees/ref_NP300");
-ref_NP300(:,1) = [];
-ref_NP300(:,1) = [];
-ref_NP300(:,1) = [];
-test_P300 = load("Donnees/test_P300");
-test_P300(:,1) = [];
-test_P300(:,1) = [];
-test_P300(:,1) = [];
-test_NP300 = load("Donnees/test_NP300");
-test_NP300(:,1) = [];
-test_NP300(:,1) = [];
-test_NP300(:,1) = [];
-%concatenation de test_NP300 et test_P300 et calcul des tailles des matrices
+%je fais different k de 1 jusqua 5 pour deux dimensions
+ref_P300 = load("rotationP300.txt");
+ref_NP300 = load("rotationNP300.txt");
+test_P300 = load("rotationP300_test.txt");
+test_NP300 = load("rotationNP300_test.txt");
 test=[test_P300;test_NP300];
 [t,tt] = size(test);
 Ntest = t ;
@@ -29,19 +15,18 @@ nl1 = i1 ;
 nl11 = i11 ;
 [k2,l] = size(ref_NP300);
 nl2 = k2 ;
-
 kk=1
 while kk<=5
 %calcul des vecteurs reconnus pour test_P300
 Nreconnu1=0;
 for k=1:nl1
   for k22=1:nl
-    distance_p1(k22,:)=abs(test_P300(k,:)-ref_P300(k22,:));
+    distance_p1(k22,:)=sqrt((test_P300(k,1)-ref_P300(k22,1))^2+(test_P300(k,2)-ref_P300(k22,2))^2);
       
   endfor
   for k222=1:nl
     
-    distance_np1(k222,:)=abs(test_P300(k,:)-ref_NP300(k222,:));  
+    distance_np1(k22,:)=sqrt((test_P300(k,1)-ref_NP300(k22,1))^2+(test_P300(k,2)-ref_NP300(k22,2))^2); 
   endfor
   distance_p1=sort(distance_p1);
   distance_np1=sort(distance_np1);
@@ -57,12 +42,12 @@ endfor
 Nreconnu2=0;
 for k=1:nl11
   for k22=1:nl
-    distance_p2(k22,:)=abs(test_NP300(k,:)-ref_P300(k22,:));
+    distance_p2(k22,:)=sqrt((test_NP300(k,1)-ref_P300(k22,1))^2+(test_NP300(k,2)-ref_P300(k22,2))^2); 
       
   endfor
   for k222=1:nl
     
-    distance_np2(k222,:)=abs(test_NP300(k,:)-ref_NP300(k222,:));  
+    distance_np2(k222,:)=sqrt((test_NP300(k,1)-ref_NP300(k22,1))^2+(test_NP300(k,2)-ref_NP300(k22,2))^2);  
   endfor
   distance_p2=sort(distance_p2);
   distance_np2=sort(distance_np2);
@@ -79,5 +64,3 @@ printf("le taux est %f pour un k = %d \n", taux, kk);
 kk=kk+1;
 
 endwhile
-
-

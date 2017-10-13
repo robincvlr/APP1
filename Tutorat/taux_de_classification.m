@@ -1,3 +1,5 @@
+%par zakaria
+%classification gaussienne avec frontieres en 1D
 ref_P300 = load("Donnees/ref_P300");
 ref_P300(:,1) = [];
 ref_P300(:,1) = [];
